@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>-K i o s c o s- Iniciar Sesión</title>
+    <link rel="stylesheet" href="../css/checkbox.css">
+    <link rel="stylesheet" href="../css/loginsesion.css">
+</head>
+<body>
+    <div class="form-container bg-muted">
+        <div class="form-wrapper">
+            <h1>Bienvenido de vuelta</h1>
+            <p>Inicia sesión en tu cuenta para continuar</p>
+            <form action="../php/login.php" method="POST">
+                <div>
+                    <label for="email">Correo electrónico</label>
+                    <input id="email" name="email" type="email" placeholder="ejemplo@email.com" required />
+                </div>
+                <div>
+                    <label for="password">Contraseña</label>
+                    <input id="password" name="password" type="password" required />
+                </div>
+                <button type="submit">Iniciar sesión</button>
+            </form>
+            <p class="link">
+                <a href="olvidaste.html" class="text-primary">¿Olvidaste tu contraseña?</a>
+            </p>
+            <p class="text-muted-foreground">¿No tienes una cuenta? <a href="registrar.html" class="text-primary">Regístrate</a></p>
+        </div>
+    </div>
+    <input type="checkbox" id="checkbox">
+    <label class="toggle" for="checkbox">
+        <div id="bar1" class="bars"></div>
+        <div id="bar2" class="bars"></div>
+        <div id="bar3" class="bars"></div>
+    </label>
+    <div class="menu">
+        <a href="../index.html">Menu principal</a>
+        <a href="sobrenosotros.html">Sobre Nosotros</a>
+        <a href="info.html">Información</a>
+    </div>
+
+    <script src="../java/detalles.js"></script>
+</body>
+</html>

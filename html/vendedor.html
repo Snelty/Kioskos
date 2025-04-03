@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicar a ser vendedor</title>
+    <link rel="stylesheet" href="../css/checkbox.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            margin: 0;
+        }
+        h1 {
+            color: #50b3a2;
+            text-align: center;
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"], input[type="email"], input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #50b3a2;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: #3d8b7d;
+        }
+        .menu {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .menu a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #50b3a2;
+        }
+        .menu a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Aplicar a ser vendedor</h1>
+    <form action="../php/aplicar-vendedor.php" method="POST">
+        <label for="nombre-completo">Nombre completo:</label>
+        <input type="text" id="nombre-completo" name="nombre-completo" required>
+
+        <label for="gmail">Gmail:</label>
+        <input type="email" id="gmail" name="gmail" required>
+
+        <label for="telefono">Número de teléfono:</label>
+        <input type="tel" id="telefono" name="telefono" required>
+
+        <label for="ubicacion-kiosko">Ubicación exacta del kiosko:</label>
+        <input type="text" id="ubicacion-kiosko" name="ubicacion-kiosko" required readonly>
+
+        <input type="submit" value="Aplicar">
+    </form>
+
+    <p>Gracias por aplicar a ser vendedor en nuestra plataforma. En seguida serás contactad@!</p>
+
+    <input type="checkbox" id="checkbox">
+    <label class="toggle" for="checkbox">
+        <div id="bar1" class="bars"></div>
+        <div id="bar2" class="bars"></div>
+        <div id="bar3" class="bars"></div>
+    </label>
+
+    <div class="menu">
+        <a href="../index.html">Menú principal</a>
+        <a href="../html/sobrenosotros.html">Sobre Nosotros</a>
+        <a href="../html/info.html">Información</a>
+        <a href="../php/mi-cuenta.php">Mi cuenta</a>
+        <a href="../html/iniciarsesion.html">Iniciar sesión</a>
+    </div>
+
+    <script>
+        // Función para obtener la ubicación del usuario
+        function obtenerUbicacion() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+
+                    // Llamar a un API de geocodificación para obtener la dirección
+                    fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`)
+                        .then(response => response.json())
+                        .then(data => {
+                            document.getElementById('ubicacion-kiosko').value = data.display_name;
+                        })
+                        .catch(error => {
+                            console.error("Error al obtener la ubicación:", error);
+                        });
+                }, function(error) {
+                    console.error("Error al obtener la ubicación:", error);
+                });
+            } else {
+                alert("La geolocalización no es compatible con este navegador.");
+            }
+        }
+        window.onload = obtenerUbicacion;
+    </script>
+</body>
+</html>

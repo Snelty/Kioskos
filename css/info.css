@@ -1,0 +1,43 @@
+.info-section {
+    background-color: #f0f0f0;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.info-section h2 {
+    font-size: 2em;
+    color: #333;
+}
+
+.info-section p {
+    font-size: 1.1em;
+    color: #666;
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.feature {
+    flex-basis: 30%;
+    margin: 10px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.feature h3 {
+    color: #b366ff;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .feature {
+        flex-basis: 100%;
+    }
+}

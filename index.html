@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>-Ki o s K o s-</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="video-background">
+        <video id="background-video" autoplay muted loop>
+            <source src="./videos/video.mp4" type="video/mp4">
+            Tu navegador no soporta el video.
+        </video>
+    </div>
+    <div class="content">
+        <div id="resultado" class="cuadradito">
+            <h1>KiosKos</h1>
+            <p class="subtitle">Encuentra el kiosko más cercano y los productos que necesitas.</p>
+            <button id="botonEncontrarCercano" class="btn btn-primary">Encontrar KiosKo más cercano</button>
+            <hr>
+            <div class="buscar-cuadradito">
+                <input type="text" id="productoInput" placeholder="Buscar producto...">
+                <button id="buscarProducto" class="btn btn-search">Buscar</button>
+            </div>
+        </div>
+    </div>
+
+    <input type="checkbox" id="checkbox">
+    <label class="toggle" for="checkbox">
+        <div id="bar1" class="bars"></div>
+        <div id="bar2" class="bars"></div>
+        <div id="bar3" class="bars"></div>
+    </label>
+    <nav class="menu">
+        <a href="/proyectin/html/iniciarsesion.html">Iniciar Sesión</a>
+        <a href="../php/mi-cuenta.php">Mi cuenta</a>
+        <a href="/proyectin/html/sobrenosotros.html">Sobre Nosotros</a>
+        <a href="/proyectin/html/info.html">Información</a>
+    </nav>
+
+    <script src="maps.js"></script>
+    <script src="./java/mostrarResultados.js"></script> 
+    <script src="./java/detalles.js"></script>
+    <script src="index.js"></script>
+    <script src="../java/menu.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const buscarProductoButton = document.getElementById('buscarProducto');
+            const productoInput = document.getElementById('productoInput');
+            
+            buscarProductoButton.addEventListener('click', function() {
+                const producto = productoInput.value.trim();
+                
+                if (producto) {
+                    window.location.href = `/proyectin/php/buscar-producto.php?product_name=${encodeURIComponent(producto)}`;
+                } else {
+                    alert("Por favor, ingresa un nombre de producto.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
